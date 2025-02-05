@@ -1,0 +1,105 @@
+<p-table [value]="tableData" #dt [globalFilterFields]="searchItems" selectionMode="single"
+  [exportHeader]="'customExportHeader'" dataKey="id" ngSkipHydration [paginator]="false"
+  [rows]="row"[tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="caption">
+    <div class="d-flex justify-content-between gap-2 align-items-center py-3">
+      <div class="input-group search-input px-3 py-2" role="search">
+        <span class="input-group-text bg-transparent border-0 ps-0" id="basic-addon1">
+          <i class="pi pi-search text-white-color"></i>
+        </span>
+        <input pInputText class="bg-transparent border-0" type="text" #search
+          (input)="filterGlobal(search?.value)" placeholder="search" />
+        <span class="input-group-text bg-transparent border-0 p-0 ms-auto" id="basic-addon1">
+          <ng-container *ngIf="search.value">
+            <i (click)="clearSearchValue(search)" class="pi pi-times text-danger cursor-pointer"></i>
+          </ng-container>
+        </span>
+      </div>
+
+<!-- (click)="dt.exportCSV()" -->
+      <button class="btn btn-dark" >
+        <i class="pi pi-external-link me-2"></i>
+        <span>Export</span>
+      </button>
+    </div>
+  </ng-template>
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let col of tableHeaders">
+        {{col.header}}
+      </th>
+      <ng-container *ngIf="showActions">
+        <th>Actions</th>
+      </ng-container>
+
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData>
+    @if(isLoading){
+      @for (item of [5]; track $index) {
+      <tr>
+        @for (item of tableHeaders; track $index) {
+        <td class="py-3">
+          <p-skeleton height="1rem" width="100%" />
+        </td>
+        }
+      </tr>
+      }
+      }@else {
+    <tr>
+      <td *ngFor="let col of tableHeaders">
+        @if(col.type=='status'){
+        <span class="status status-{{rowData[col.field]}}">
+          {{rowData[col.field]}}
+        </span>
+        }@else if(col.type=='url'){
+        <a href="{{rowData[col.field]}}" target="_blank" class="text-decoration-underline word-wrap">
+          {{rowData[col.field]}}
+        </a>
+        }@else if(col.type=='date'){
+          {{rowData[col.field]| date}}
+        }
+        @else if(col.type=='password'){
+          {{maskPassword(rowData[col.field])}}
+        }
+        @else {
+        {{rowData[col.field]}}
+        }
+      </td>
+      <ng-container *ngIf="showActions">
+        <td>
+          <div class="d-flex align-items-center gap-3">
+            <a>
+              <i class="pi pi-file-edit"></i>
+            </a>
+            <a>
+              <i class="pi pi-trash"></i>
+            </a>
+          </div>
+        </td>
+      </ng-container>
+    </tr>}
+  </ng-template>
+  <ng-template pTemplate="emptymessage">
+    @if(isLoading){
+    @for (item of [5,4,5,7,9,9,7]; track $index) {
+    <tr>
+      @for (item of tableHeaders; track $index) {
+      <td class="py-3">
+        <p-skeleton height="1rem" width="100%" />
+      </td>
+      }
+    </tr>
+    }
+    }@else {
+    <tr>
+      <td colspan="16" class="py-5">
+        <app-no-data [text]="'No data to present'"></app-no-data>
+      </td>
+    </tr>
+    }
+  </ng-template>
+</p-table>
+@if(tableData?.length>0){
+<p-paginator #paginator [rows]="paginatorRows" [totalRecords]="totalRecords" [showPageLinks]="true" [pageLinkSize]="5"
+(onPageChange)="paginate($event)" ngSkipHydration></p-paginator>}

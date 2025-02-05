@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center align-items-center min-vh-100 py-3">
+  <div class="container">
+    <div class="row justify-content-center w-100">
+      <div class="col-lg-5 col-md-7">
+        <div class="shadow rounded-3 p-4">
+          <h1 class="fs-3 text-center">Sign In</h1>
+          <form class="mt-4">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+              <label for="floatingInput">Username or Email address</label>
+            </div>
+            <div class="form-floating">
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+              <label for="floatingPassword">Password</label>
+            </div>
+            <button class="btn btn-solid-main w-100 mt-4" type="button" [routerLink]="'/'">Sign In</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

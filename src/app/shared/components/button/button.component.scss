@@ -1,0 +1,30 @@
+.btn-solid-main,
+.btn-solid-main:hover {
+  border: 1px solid var(--bg-main-color);
+  background-color: var(--bg-main-color);
+  color: var(--text-white-color);
+}
+.btn-solid-dark-main,
+.btn-solid-dark-main:hover {
+  border: 1px solid #3a3a3c;
+  color: #d7dbe6;
+  background-color: #3a3a3c;
+}
+.btn-outline-black,
+.btn-outline-black:hover {
+  border: 1px solid var(--bg-dark-color);
+  background-color: transparent;
+  color: var(--text-dark-color);
+}
+.btn-solid-white {
+  border: 1px solid var(--bg-white-color);
+  background-color: var(--bg-white-color);
+  color: var(--text-dark-color);
+}
+.btn-sm {
+  height: 1.7rem !important;
+  padding-block: 0.2rem !important;
+}
+.icon {
+  font-size: 0.9rem;
+}

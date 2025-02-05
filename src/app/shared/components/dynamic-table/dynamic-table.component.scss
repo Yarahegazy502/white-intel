@@ -1,0 +1,87 @@
+:host::ng-deep {
+  .p-datatable-header {
+    background-color: transparent;
+    border: 0;
+  }
+  th,
+  td {
+    padding: 0.8rem 1.2rem;
+    border-bottom: 1px solid rgb(49, 49, 49);
+  }
+  th {
+    background-color: rgb(49, 49, 49);
+    color: rgb(215, 219, 230);
+  }
+  td {
+    min-width:15rem;
+    background-color: #1c1c1e;
+    color: #d7dbe6;
+  }
+   .p-paginator {
+    background-color: transparent;
+    border: 0;
+    margin-block: 1rem !important;
+    span{
+      display: flex
+      ;
+          gap: 6px;
+    }
+    .p-paginator-page,
+    .p-paginator-page:hover,
+    button {
+      background-color: transparent;
+      min-width: 2.5rem !important;
+      pading-inline:4px;
+      height: 2.5rem !important;
+    }
+    .p-paginator-page.p-highlight {
+      background-color: var(--bg-main-color);
+      color: var(--text-white-color) !important;
+      border-radius: 10px;
+    }
+  }
+  .p-skeleton {
+    background:#212529;
+  }
+}
+.status {
+  padding: 0.2rem 0.6rem;
+  width: fit-content;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #fff;
+  &.status-Active {
+    background-color: #6d747e;
+  }
+  &.status-Cancelled {
+    background-color: #df3444;
+  }
+  &.status-Completed,
+  &.status-Ready {
+    background-color: #198851;
+  }
+  &.status-In {
+    background-color: #ffbe00;
+  }
+  &.status-Preparing {
+    background-color: #09c8f4;
+  }
+}
+.search-input {
+  height: 3rem !important;
+  max-width: 24rem;
+  background-color: var(--card-bg);
+  border: 0;
+  border-radius: 12px;
+  input {
+    color: var(--text-white-color);
+    width: 85%;
+    &:focus-visible {
+      border: 0;
+      outline: 0;
+    }
+  }
+}
+.word-wrap {
+  word-break: break-all;
+}

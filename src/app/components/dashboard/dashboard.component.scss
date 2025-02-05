@@ -1,0 +1,18 @@
+#side-menu {
+  width: 14rem;
+  transition: all 0.3s linear;
+  position:sticky;
+  top:0;
+}
+#main {
+  transition: all 0.3s linear;
+  width: calc(100% - 14rem);
+}
+.side-menu {
+  // width: 7rem;
+  transform: translateX(-14rem);
+  transition: all 0.3s linear;
+}
+.main {
+  width: 100% !important;
+}

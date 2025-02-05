@@ -1,0 +1,14 @@
+.product-img {
+  height: 9rem;
+  object-fit: cover;
+}
+.cart-bag {
+  width: 1.7rem;
+  height: 1.7rem;
+  right: 0.8rem;
+  top: 0.8rem;
+  &:hover {
+    background-color: var(--bg-main-color) !important;
+    color: var(--text-white-color) !important;
+  }
+}

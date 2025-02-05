@@ -1,0 +1,10 @@
+<button class="btn {{color}} btn-{{type}} d-flex justify-content-center align-items-center gap-2 fs-6"
+  [class.rounded-pill]="pill">
+  @if(showIcon){
+  <i class="{{icon}} icon"></i>
+  }
+  @if(!onlyIcon){
+  <span>{{text}}</span>
+  }
+
+</button>

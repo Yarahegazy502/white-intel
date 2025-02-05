@@ -1,0 +1,12 @@
+<div class="combolist mt-4 px-4">
+  <div class="container">
+    <div class="mt-4">
+      <div class="shadow-sm">
+        <app-dynamic-table [tableData]="combolist" [tableHeaders]="headers" [showActions]="false"
+        [paginatorRows]="limit" [totalRecords]="total"
+        [isLoading]="isLoading" (paginateOptionsHandler)="paginate($event)"></app-dynamic-table>
+      </div>
+
+    </div>
+  </div>
+</div>

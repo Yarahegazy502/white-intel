@@ -1,0 +1,15 @@
+.input-group {
+  background-color: var(--card-bg);
+  border-radius: 14px;
+
+  input {
+    color: var(--text-white-color);
+    &::placeholder {
+      color: rgb(117, 117, 117);
+    }
+  }
+  .search-btn {
+    background-color: #3a3a3c;
+    color: #d7dbe6;
+  }
+}

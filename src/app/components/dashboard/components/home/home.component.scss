@@ -1,0 +1,8 @@
+.title {
+  border-bottom: 1px solid #cbcbcb29;
+}
+:host::ng-deep{
+  .p-skeleton {
+    background:#212529;
+  }
+}

@@ -1,0 +1,11 @@
+<div [class.d-flex]="!toggleMenu">
+  @if(!toggleMenu){
+  <aside id="side-menu" [class.side-menu]="toggleMenu">
+    <app-aside-menu></app-aside-menu>
+  </aside>
+  }
+  <main id="main" [class.main]="toggleMenu">
+    <app-navbar></app-navbar>
+    <router-outlet></router-outlet>
+  </main>
+</div>

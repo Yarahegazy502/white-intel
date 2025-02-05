@@ -1,0 +1,55 @@
+<div class="px-4">
+  <div class="container">
+    <div class="row mt-5 gy-3">
+      @if(!isLoading){
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="global-card">
+          <div class="d-flex align-items-center gap-2 text-white title p-3">
+            <i class="pi pi-desktop"></i>
+            <span>DEVICES</span>
+          </div>
+          <div class="d-flex justify-content-center p-3 text-white fs-4">
+            {{details?.devices||'No Result'}}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="global-card">
+          <div class="d-flex align-items-center gap-2 text-white title p-3">
+            <i class="pi pi-users fs-5"></i>
+            <span>ACCOUNTS</span>
+          </div>
+          <div class="d-flex justify-content-center p-3 text-white fs-4">
+            {{details?.accounts||'No Result'}}
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <div class="global-card">
+          <div class="d-flex align-items-center gap-2 text-white title p-3">
+            <i class="pi pi-user fs-5"></i>
+            <span>CORPORATE</span>
+          </div>
+          <div class="d-flex justify-content-center p-3 text-white fs-4">
+            {{details?.corporate||'No Result'}}
+          </div>
+        </div>
+      </div>
+    }@else{
+    @for (item of [5,4,5]; track $index) {
+      <div class="col-lg-3 col-md-4 col-sm-6">
+        <p-skeleton height="8rem" width="100%" />
+      </div>
+    }
+    }
+    </div>
+    <div class="mt-4 d-flex justify-content-center">
+      @if(isLoading){
+        <p-skeleton size="25rem" shape="circle"  />
+      }
+      @else {
+      <app-earth-statistics class="w-100" [countries]="details?.country_frequency"></app-earth-statistics>
+    }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,17 @@
+<div class="aside-menu p-3">
+  <div class="logo d-flex gap-2 align-items-center">
+    <img src="assets/images/logos/logo.png" alt="logo">
+    <span class="text-white-color">WHITE INTEL</span>
+  </div>
+  <ul class="aside-content p-0 d-flex flex-column w-100 gap-3 mt-3">
+    @for (item of menu; track $index) {
+    <li>
+      <a class="aside-link px-3 py-2 d-flex gap-2 align-items-center gap-1 text-white-color " title="{{item.title}}"
+        [routerLink]="item.urlLink" routerLinkActive="aside-link-active" [routerLinkActiveOptions]="{exact: true}">
+        <i class="{{item.icon}}"></i>
+        <p class="m-0">{{item.title}}</p>
+      </a>
+    </li>
+    }
+  </ul>
+</div>

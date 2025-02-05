@@ -1,0 +1,28 @@
+* {
+  margin: 0 !important;
+  padding: 0;
+  box-sizing: border-box !important;
+}
+body {
+  background-color: var(--body-bg);
+}
+ul {
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.global-card {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  background-color: var(--card-bg);
+  border-radius: 10px;
+}
+
+input:focus {
+  box-shadow: none !important;
+}
