@@ -14,7 +14,7 @@ import * as am5 from '@amcharts/amcharts5';
   templateUrl: './earth-statistics.component.html',
   styleUrls: ['./earth-statistics.component.scss']
 })
-export class EarthStatisticsComponent implements  OnDestroy {
+export class EarthStatisticsComponent implements OnDestroy {
   private chart?: am5map.MapChart;
   @Input() countries: any = [];
   isLoading: boolean = false;
@@ -44,7 +44,7 @@ export class EarthStatisticsComponent implements  OnDestroy {
     this.getGlobalMapData();
   }
 
- 
+
 
   getGlobalMapData(): void {
 
@@ -51994,50 +51994,53 @@ export class EarthStatisticsComponent implements  OnDestroy {
         ]
       }
       earthData?.features?.forEach((item: any) => {
+        let matched = false; // Track if a match is found
+
         Object?.entries(this.countries).forEach(([key, value]) => {
-          // console.log(key)
-          // console.log(item?.properties.name==key)
           if (item?.properties?.name == key) {
             item.properties['count'] = value;
             item.properties['localize_name'] = key;
-            // localize_name
-            
-            console.log(key,item.properties.count)
-          } else {
-            item.properties['count'] = 0;
-            item.properties['localize_name'] = item?.name;
+            matched = true; // Mark as matched
+
           }
         });
-      });
-      // console.log(earthData?.features);
 
+        // If no match was found, set default values
+        if (!matched) {
+          item.properties['count'] = 0;
+          item.properties['localize_name'] = item?.properties?.name;
+        }
+      });
+
+      // console.log(earthData?.features);
+      console.log(earthData)
       // let earthData:any;
       let polygonSeries: any = chart.series.push(am5map.MapPolygonSeries.new(root, {
         geoJSON: earthData as any
       }));
-    
+
       polygonSeries.mapPolygons.template.setAll(
         // Object.entries(earthData).foreach((item)=>
         {
-        tooltipText: "{name}:{count}",
-        // tooltipText: "{localize_name}:{count}",
-        toggleKey: "active",
-        interactive: true,
-        fill: am5.color("#242424"),
-        fillOpacity: 1,
-        stroke: am5.color("#242424"),
-        strokeWidth: 1,
-        strokeOpacity: 1,
-        shadowColor: am5.color("#000"),
-        shadowOpacity: 0.2,
-        shadowBlur: 5,
-        tooltipPosition: "fixed",            // position mode of the tooltip
-        nonScalingStroke: true,              // disables stroke scaling
-        draggable: false,
-        // makes the polygon draggable
-        // ... potentially more properties
-      });
-    // );
+          tooltipText: "{name}:{count}",
+          // tooltipText: "{localize_name}:{count}",
+          toggleKey: "active",
+          interactive: true,
+          fill: am5.color("#242424"),
+          fillOpacity: 1,
+          stroke: am5.color("#242424"),
+          strokeWidth: 1,
+          strokeOpacity: 1,
+          shadowColor: am5.color("#000"),
+          shadowOpacity: 0.2,
+          shadowBlur: 5,
+          tooltipPosition: "fixed",            // position mode of the tooltip
+          nonScalingStroke: true,              // disables stroke scaling
+          draggable: false,
+          // makes the polygon draggable
+          // ... potentially more properties
+        });
+      // );
       this.chart = chart;
     });
 
