@@ -2,8 +2,12 @@
   <div class="container">
     <div class="d-flex justify-content-between gap-3 w-100 align-items-center">
       <app-search></app-search>
-      <app-button [text]="'Knowledge Base'" [icon]="'pi pi-file'" [color]="'btn-solid-dark-main'" [pill]="true"
-        [showIcon]="true"></app-button>
+      <div class="d-flex gap-2">
+        <app-button [text]="'Knowledge Base'" [icon]="'pi pi-file'" [color]="'btn-solid-dark-main'" [pill]="true"
+          [showIcon]="true"></app-button>
+        <app-button [text]="'Logout'" [icon]="'pi pi-lock'" [color]="'btn-solid-dark-main'" [pill]="true"
+          (onClick)="logout()" [showIcon]="true"></app-button>
+      </div>
     </div>
   </div>
 

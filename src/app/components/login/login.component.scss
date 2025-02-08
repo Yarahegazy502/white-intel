@@ -1,4 +1,24 @@
-.btn-solid-main {
+.btn-solid-main,
+.btn-solid-main:focus {
   background-color: var(--bg-main-color);
+  border-color: var(--bg-main-color);
   color: var(--text-white-color);
+  padding-block: 0.7rem;
+}
+input,
+.form-control:focus {
+  background-color: #2e2e2e;
+  border-color: #444;
+  color: #fff;
+}
+.form-floating > label {
+  color: #fafafac7;
+}
+.form-floating > .form-control ~ label::after {
+  background-color: transparent;
+}
+.content {
+  background-color: #1e8fff1a;
+  color: var(--text-main-color);
+  padding: 0.8rem;
 }

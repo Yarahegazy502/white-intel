@@ -34,4 +34,9 @@ export class DashboardComponent implements DoCheck {
       this.shouldRender = true;
     }
   }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('token')
+  }
+
 }

@@ -35,4 +35,9 @@ export class NavbarComponent {
     this.toggleMenu = !this.toggleMenu;
     this.publicService.toggleAsideMenu.next(this.toggleMenu)
   }
+
+  logout():void{
+    localStorage.removeItem('token');
+this.router.navigate(['/Login']);
+  }
 }

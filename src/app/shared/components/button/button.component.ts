@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input ,Output,EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'app-button',
@@ -17,4 +17,10 @@ export class ButtonComponent {
   @Input() showIcon: boolean = false;
   @Input() onlyIcon: boolean = false;
   @Input() isDisabled: boolean = false;
+
+  @Output() onClick=new EventEmitter();
+
+  clickBtn():void{
+    this.onClick.emit();
+  }
 }

@@ -2,18 +2,29 @@
   <div class="container">
     <div class="row justify-content-center w-100">
       <div class="col-lg-5 col-md-7">
-        <div class="shadow rounded-3 p-4">
-          <h1 class="fs-3 text-center">Sign In</h1>
-          <form class="mt-4">
+        <div class="global-card shadow rounded-3 p-4">
+          <h1 class="fs-3 text-white text-center">Sign In</h1>
+          <div class="content mt-4">
+
+            Use account <span class="fw-bold">{{'daxd404@gmail.com'}}</span> and password <span
+              class="fw-bold">0Xdax404#</span> to continue to
+            Website.
+
+
+          </div>
+          <form class="mt-4" [formGroup]="loginForm">
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-              <label for="floatingInput">Username or Email address</label>
+              <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                formControlName="email">
+              <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
-              <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-              <label for="floatingPassword">Password</label>
+              <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                formControlName="password">
+              <label for=" floatingPassword">Password</label>
             </div>
-            <button class="btn btn-solid-main w-100 mt-4" type="button" [routerLink]="'/'">Sign In</button>
+            <button class="btn btn-solid-main w-100 mt-4" type="button" (click)="login()">Sign
+              In</button>
           </form>
         </div>
       </div>
