@@ -15,12 +15,12 @@
           <form class="mt-4" [formGroup]="loginForm">
             <div class="form-floating mb-3">
               <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
-                formControlName="email">
+                formControlName="email" [autocomplete]="false">
               <label for="floatingInput">Email address</label>
             </div>
             <div class="form-floating">
               <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
-                formControlName="password">
+                [autocomplete]="false" formControlName="password">
               <label for=" floatingPassword">Password</label>
             </div>
             <button class="btn btn-solid-main w-100 mt-4" type="button" (click)="login()">Sign
