@@ -3,7 +3,7 @@
   [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template pTemplate="caption">
     <div class="d-flex justify-content-between gap-2 align-items-center py-3 flex-wrap">
-      <div class="d-flex gap-2 flex-md-nowrap flex-wrap">
+      <div class="d-flex gap-3 flex-md-nowrap flex-wrap">
         <div class="input-group search-input px-3 py-2" role="search">
           <span class="input-group-text bg-transparent border-0 ps-0" id="basic-addon1">
             <i class="pi pi-search text-white-color"></i>
@@ -29,10 +29,16 @@
       </div>
 
       <!-- (click)="dt.exportCSV()" -->
-      <button class="btn btn-dark">
-        <i class="pi pi-external-link me-2"></i>
-        <span>Export</span>
-      </button>
+      <div class="d-flex gap-3">
+        <button class="btn btn-primary" (click)="searchHandler(search?.value,searchUrl?.value)">
+          <i class="pi pi-search me-2"></i>
+          <span>Search</span>
+        </button>
+        <button class="btn btn-outline-primary" (click)="clearSearch(search,searchUrl)">
+          <i class="pi pi-times me-2"></i>
+          <span>Clear</span>
+        </button>
+      </div>
     </div>
   </ng-template>
   <ng-template pTemplate="header">

@@ -41,8 +41,8 @@ export class DynamicTableComponent {
       this.searchItems?.push(item?.field);
     });
 
-    this.searchHandle();
-    this.searchHandleUrl();
+    // this.searchHandle();
+    // this.searchHandleUrl();
   }
 
   searchHandle(): void {
@@ -102,6 +102,16 @@ export class DynamicTableComponent {
 
   filterGlobalUrl(val: any): void {
     this.searchSubjectUrl.next(val);
+  }
+  searchHandler(username: any, url: any): void {
+    this.search.emit({ username: username ? username : null, url: url ? url : null });
+    this.paginator?.changePage(0);
+  }
+  clearSearch(username: any, url: any): void {
+    username.value = '';
+    url.value = '';
+    this.search.emit({ username: null, url: null });
+    this.paginator?.changePage(0);
   }
 
   maskPassword(text: string): string {

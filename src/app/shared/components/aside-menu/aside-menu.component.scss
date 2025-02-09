@@ -1,13 +1,14 @@
 .aside-menu {
   background-color: var(--card-bg);
   position: fixed;
-    width: 14rem;
+  width: 14rem;
   .logo {
     height: 4rem;
     border-bottom: 1px solid #ffffff30;
     img {
       height: fit-content;
       margin: auto;
+      width: 5rem;
     }
   }
   .aside-content {

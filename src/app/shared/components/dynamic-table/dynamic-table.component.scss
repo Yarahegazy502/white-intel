@@ -74,7 +74,7 @@
   border-radius: 12px;
   input {
     color: var(--text-white-color);
-    width: 12rem;
+    width: 13rem;
     &:focus-visible {
       border: 0;
       outline: 0;
@@ -86,4 +86,13 @@
 }
 .v-hidden {
   visibility: hidden;
+}
+.btn-primary {
+  background-color: var(--bg-main-color) !important;
+}
+.btn-outline-primary,
+.btn-outline-primary:hover {
+  border-color: var(--bg-main-color) !important;
+  color: var(--text-main-color) !important;
+  background-color: transparent !important;
 }

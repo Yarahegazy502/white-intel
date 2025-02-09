@@ -95,8 +95,9 @@ export class CorporateComponent {
 
   search(val: any): void {
     this.page = 1;
-    this.username = val;
-    if (val == null) {
+    this.username = val?.username;
+    this.url = val?.url;
+    if (this.corporateList?.length == 0) {
       this.getCorporateList();
     }
   }
