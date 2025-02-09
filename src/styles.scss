@@ -11,3 +11,10 @@ body {
     "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
+.p-toast-message-content {
+  padding: 1rem;
+  gap: 7px;
+}
+.p-toast-message-icon {
+  margin-top: 3px !important;
+}

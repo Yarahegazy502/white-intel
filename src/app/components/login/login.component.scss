@@ -5,6 +5,13 @@
   color: var(--text-white-color);
   padding-block: 0.7rem;
 }
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+  transition: background-color 600000s 0s, color 600000s 0s;
+}
+input[data-autocompleted] {
+  background-color: transparent !important;
+}
 input,
 .form-control:focus {
   background-color: #2e2e2e;
