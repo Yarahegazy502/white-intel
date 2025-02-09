@@ -25,6 +25,7 @@ export class DynamicTableComponent {
 
   @Input() paginatorRows: number = 10;
   @Input() totalRecords: number = 0;
+  @Input() dateFormateString: string = 'EE | dd/MM/YYYY | hh:mm a';
 
   searchItems: any = [];
   @Output() paginateOptionsHandler: EventEmitter<any> = new EventEmitter();

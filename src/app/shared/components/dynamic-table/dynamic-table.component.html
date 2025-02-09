@@ -75,7 +75,7 @@
           {{rowData[col.field]}}
         </a>
         }@else if(col.type=='date'){
-        {{rowData[col.field]| date}}
+        {{ rowData[col.field] ? (rowData[col.field] | date:dateFormateString) : 'N/A' }}
         }
         @else if(col.type=='password'){
         {{maskPassword(rowData[col.field])}}
