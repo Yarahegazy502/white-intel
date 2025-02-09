@@ -3,8 +3,9 @@
     <div class="mt-4">
       <div class="shadow-sm">
         <app-dynamic-table [tableData]="combolist" [tableHeaders]="headers" [showActions]="false"
-        [paginatorRows]="limit" [totalRecords]="total"
-        [isLoading]="isLoading" (paginateOptionsHandler)="paginate($event)"></app-dynamic-table>
+          [paginatorRows]="limit" [totalRecords]="total" [isLoading]="isLoading"
+          (paginateOptionsHandler)="paginate($event)" (search)="search($event)"
+          (searchUrl)="searchUrl($event)"></app-dynamic-table>
       </div>
 
     </div>

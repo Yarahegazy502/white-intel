@@ -1,9 +1,9 @@
 import { DynamicTableComponent } from '../../../../shared/components/dynamic-table/dynamic-table.component';
 import { DashboardService } from '../../../../services/dashboard.service';
 import { AlertsService } from '../../../../services/alerts.service';
+import { Title } from '@angular/platform-browser'; // For SEO purposes
 import { Component } from '@angular/core';
 import { Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'app-corporate',
@@ -17,10 +17,11 @@ export class CorporateComponent {
 
   corporateList: { Username: string, URL: string, Password: string }[] = [];
   isLoading: boolean = false;
-  total:number=0;
-limit:number=10;
-page:number=1;
-username:any=null;
+  total: number = 0;
+  limit: number = 10;
+  page: number = 1;
+  username: any = null;
+  url: any = null;
 
   headers: any = [
     // { field: 'ID', header: 'ID', type: 'text' },
@@ -41,36 +42,40 @@ username:any=null;
   constructor(
     private readonly dashboardService: DashboardService,
     private readonly alertsService: AlertsService,
+    private title: Title,// For SEO
   ) { }
 
   ngOnInit(): void {
+    this.title.setTitle('Corporate');
     this.getCorporateList();
   }
 
   getCorporateList(): void {
     this.isLoading = true;
-    let sub:Subscription=    this.dashboardService.getCorporateList(this.page,this.limit,this.username).subscribe({
+    let sub: Subscription = this.dashboardService.getCorporateList(this.page, this.limit, this.username, this.url).subscribe({
       next: (res: any) => {
-        let data:any[]=[];
-        res?.data?.forEach((item:any)=>{{
-data.push({
-  "ID": item?.system?.ID,
-  "OS": item?.system?.OS,
-  "Path": item?.system?.Path,
-  "InstallDate": item?.system?.InstallData,
-  "Hostname": item?.system?.Hostname,
-  "Antivirus": item?.system?.Antivirus,
-  "HWID": item?.system?.HWID,
-  "IPAddress": item?.system?.IPAddress,
-  "LeakedDate": item?.system?.LeakedData,
-  "Country": item?.system?.Country,
-  "URL": item?.credentials?.URL,
-  "Username": item?.credentials?.Username,
-  "Password": item?.credentials?.Password,
-})
-        }})
+        let data: any[] = [];
+        res?.data?.forEach((item: any) => {
+          {
+            data.push({
+              "ID": item?.system?.ID,
+              "OS": item?.system?.OS,
+              "Path": item?.system?.Path,
+              "InstallDate": item?.system?.InstallData,
+              "Hostname": item?.system?.Hostname,
+              "Antivirus": item?.system?.Antivirus,
+              "HWID": item?.system?.HWID,
+              "IPAddress": item?.system?.IPAddress,
+              "LeakedDate": item?.system?.LeakedData,
+              "Country": item?.system?.Country,
+              "URL": item?.credentials?.URL,
+              "Username": item?.credentials?.Username,
+              "Password": item?.credentials?.Password,
+            })
+          }
+        })
         this.corporateList = data;
-        this.total=res?.meta?.total;
+        this.total = res?.meta?.total;
 
         this.isLoading = false;
       },
@@ -83,14 +88,24 @@ data.push({
 
   }
 
-  paginate(e:any):void{
-    this.page=e?.page+1;
+  paginate(e: any): void {
+    this.page = e?.page + 1;
     this.getCorporateList();
   }
 
-  search(val:any):void{
-    this.page=1;
-    this.username=val;
+  search(val: any): void {
+    this.page = 1;
+    this.username = val;
+    if (val == null) {
+      this.getCorporateList();
+    }
+  }
+  searchUrl(val: any): void {
+    this.page = 1;
+    this.url = val;
+    if (val == null) {
+      this.getCorporateList();
+    }
   }
 
   ngOnDestroy(): void {

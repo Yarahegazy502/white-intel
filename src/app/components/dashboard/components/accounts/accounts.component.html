@@ -2,8 +2,9 @@
   <div class="container">
     <div class="mt-4">
       <div class="shadow-sm">
-        <app-dynamic-table [tableData]="accounts" [tableHeaders]="headers" [showActions]="false" [paginatorRows]="limit" [totalRecords]="total"
-          [isLoading]="isLoading" (paginateOptionsHandler)="paginate($event)" (search)="search($event)"></app-dynamic-table>
+        <app-dynamic-table [tableData]="accounts" [tableHeaders]="headers" [showActions]="false" [paginatorRows]="limit"
+          [totalRecords]="total" [isLoading]="isLoading" (paginateOptionsHandler)="paginate($event)"
+          (search)="search($event)" (searchUrl)="searchUrl($event)"></app-dynamic-table>
       </div>
 
     </div>

@@ -13,25 +13,24 @@
     color: rgb(215, 219, 230);
   }
   td {
-    min-width:15rem;
+    min-width: 15rem;
     background-color: #1c1c1e;
     color: #d7dbe6;
   }
-   .p-paginator {
+  .p-paginator {
     background-color: transparent;
     border: 0;
     margin-block: 1rem !important;
-    span{
-      display: flex
-      ;
-          gap: 6px;
+    span {
+      display: flex;
+      gap: 6px;
     }
     .p-paginator-page,
     .p-paginator-page:hover,
     button {
       background-color: transparent;
       min-width: 2.5rem !important;
-      pading-inline:4px;
+      pading-inline: 4px;
       height: 2.5rem !important;
     }
     .p-paginator-page.p-highlight {
@@ -41,7 +40,7 @@
     }
   }
   .p-skeleton {
-    background:#212529;
+    background: #212529;
   }
 }
 .status {
@@ -75,7 +74,7 @@
   border-radius: 12px;
   input {
     color: var(--text-white-color);
-    width: 85%;
+    width: 80%;
     &:focus-visible {
       border: 0;
       outline: 0;
@@ -84,4 +83,7 @@
 }
 .word-wrap {
   word-break: break-all;
+}
+.v-hidden {
+  visibility: hidden;
 }

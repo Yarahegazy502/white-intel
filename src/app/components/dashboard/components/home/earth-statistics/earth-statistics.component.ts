@@ -52040,11 +52040,11 @@ export class EarthStatisticsComponent implements OnDestroy {
           // makes the polygon draggable
           // ... potentially more properties
         });
-        // Apply color dynamically based on count
-polygonSeries.mapPolygons.template.adapters.add("fill", function (fill:any, target:any) {
-  let count = target.dataItem?.dataContext?.count || 0;
-  return count > 0 ? am5.color("#b60000") : am5.color("#242424"); // Red if count > 0, default otherwise
-});
+      // Apply color dynamically based on count
+      polygonSeries.mapPolygons.template.adapters.add("fill", function (fill: any, target: any) {
+        let count = target.dataItem?.dataContext?.count || 0;
+        return count > 0 && count < 500 ? am5.color("#c21807") : count >= 500 && count < 1000 ? am5.color("#9b1305") : count >= 1000 ? am5.color("#760e05") : am5.color("#242424"); // Red if count > 0, default otherwise
+      });
       // );
       this.chart = chart;
     });

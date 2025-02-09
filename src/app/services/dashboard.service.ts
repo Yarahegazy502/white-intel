@@ -16,26 +16,35 @@ export class DashboardService {
     return this.http.get(`${this.url}/${root.dashboard}`);
   }
 
-  getAccounts(page:number,limit:number,username?:string): Observable<any> {
-    let params=`?limit=${limit}&page=${page}`
-    if(username!=null){
-      params+=`&username=${username}`
+  getAccounts(page: number, limit: number, username: string, url: any): Observable<any> {
+    let params = `?limit=${limit}&page=${page}`
+    if (username != null) {
+      params += `&username=${username}`
+    }
+    if (url != null) {
+      params += `&url=${url}`
     }
     return this.http.get(`${this.url}/${root.accounts}${params}`);
   }
 
-  getCombolist(page:number,limit:number,username?:string): Observable<any> {
-    let params=`?limit=${limit}&page=${page}`
-    if(username!=null){
-      params+=`&username=${username}`
+  getCombolist(page: number, limit: number, username: string, url: any): Observable<any> {
+    let params = `?limit=${limit}&page=${page}`
+    if (username != null) {
+      params += `&username=${username}`
+    }
+    if (url != null) {
+      params += `&url=${url}`
     }
     return this.http.get(`${this.url}/${root.combolist}${params}`);
   }
 
-  getCorporateList(page:number,limit:number,username?:string): Observable<any> {
-    let params=`?limit=${limit}&page=${page}`
-    if(username!=null){
-      params+=`&username=${username}`
+  getCorporateList(page: number, limit: number, username: string, url: any): Observable<any> {
+    let params = `?limit=${limit}&page=${page}`
+    if (username != null) {
+      params += `&username=${username}`
+    }
+    if (url != null) {
+      params += `&url=${url}`
     }
     return this.http.get(`${this.url}/${root.corporate}${params}`);
   }

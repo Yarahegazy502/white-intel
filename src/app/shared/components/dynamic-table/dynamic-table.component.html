@@ -1,23 +1,34 @@
 <p-table [value]="tableData" #dt [globalFilterFields]="searchItems" selectionMode="single"
-  [exportHeader]="'customExportHeader'" dataKey="id" ngSkipHydration [paginator]="false"
-  [rows]="row"[tableStyle]="{ 'min-width': '50rem' }">
+  [exportHeader]="'customExportHeader'" dataKey="id" ngSkipHydration [paginator]="false" [rows]="row"
+  [tableStyle]="{ 'min-width': '50rem' }">
   <ng-template pTemplate="caption">
     <div class="d-flex justify-content-between gap-2 align-items-center py-3">
-      <div class="input-group search-input px-3 py-2" role="search">
-        <span class="input-group-text bg-transparent border-0 ps-0" id="basic-addon1">
-          <i class="pi pi-search text-white-color"></i>
-        </span>
-        <input pInputText class="bg-transparent border-0" type="text" #search
-          (input)="filterGlobal(search?.value)" placeholder="search" />
-        <span class="input-group-text bg-transparent border-0 p-0 ms-auto" id="basic-addon1">
-          <ng-container *ngIf="search.value">
-            <i (click)="clearSearchValue(search)" class="pi pi-times text-danger cursor-pointer"></i>
-          </ng-container>
-        </span>
+      <div class="d-flex gap-2">
+        <div class="input-group search-input px-3 py-2" role="search">
+          <span class="input-group-text bg-transparent border-0 ps-0" id="basic-addon1">
+            <i class="pi pi-search text-white-color"></i>
+          </span>
+          <input pInputText class="bg-transparent border-0" type="text" #search (input)="filterGlobal(search?.value)"
+            placeholder="Search Username" />
+          <span class="input-group-text bg-transparent border-0 p-0 ms-auto" id="basic-addon1">
+              <i (click)="clearSearchValue(search)" class="pi pi-times text-danger cursor-pointer" [class.v-hidden]="!search.value"></i>
+          </span>
+        </div>
+        <div class="input-group search-input px-3 py-2" role="search">
+          <span class="input-group-text bg-transparent border-0 ps-0" id="basic-addon1">
+            <i class="pi pi-search text-white-color"></i>
+          </span>
+          <input pInputText class="bg-transparent border-0" type="text" #searchUrl
+            (input)="filterGlobalUrl(searchUrl?.value)" placeholder="Search Url" />
+          <span class="input-group-text bg-transparent border-0 p-0 ms-auto" id="basic-addon1">
+            <i (click)="clearSearchValueUrl(searchUrl)" class="pi pi-times text-danger cursor-pointer"
+              [class.v-hidden]="!searchUrl.value"></i>
+          </span>
+        </div>
       </div>
 
-<!-- (click)="dt.exportCSV()" -->
-      <button class="btn btn-dark" >
+      <!-- (click)="dt.exportCSV()" -->
+      <button class="btn btn-dark">
         <i class="pi pi-external-link me-2"></i>
         <span>Export</span>
       </button>
@@ -36,16 +47,16 @@
   </ng-template>
   <ng-template pTemplate="body" let-rowData>
     @if(isLoading){
-      @for (item of [5]; track $index) {
-      <tr>
-        @for (item of tableHeaders; track $index) {
-        <td class="py-3">
-          <p-skeleton height="1rem" width="100%" />
-        </td>
-        }
-      </tr>
+    @for (item of [5]; track $index) {
+    <tr>
+      @for (item of tableHeaders; track $index) {
+      <td class="py-3">
+        <p-skeleton height="1rem" width="100%" />
+      </td>
       }
-      }@else {
+    </tr>
+    }
+    }@else {
     <tr>
       <td *ngFor="let col of tableHeaders">
         @if(col.type=='status'){
@@ -57,10 +68,10 @@
           {{rowData[col.field]}}
         </a>
         }@else if(col.type=='date'){
-          {{rowData[col.field]| date}}
+        {{rowData[col.field]| date}}
         }
         @else if(col.type=='password'){
-          {{maskPassword(rowData[col.field])}}
+        {{maskPassword(rowData[col.field])}}
         }
         @else {
         {{rowData[col.field]}}
@@ -102,4 +113,4 @@
 </p-table>
 @if(tableData?.length>0){
 <p-paginator #paginator [rows]="paginatorRows" [totalRecords]="totalRecords" [showPageLinks]="true" [pageLinkSize]="5"
-(onPageChange)="paginate($event)" ngSkipHydration></p-paginator>}
+  (onPageChange)="paginate($event)" ngSkipHydration></p-paginator>}
